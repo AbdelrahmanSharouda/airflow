@@ -1,4 +1,5 @@
 from airflow import DAG
+from airflow.operators.bash import BashOperator
 from datetime import datetime,timedelta
 
 default_args = {
@@ -15,4 +16,9 @@ with DAG(
     schedule_interval='@daily'
     
 ) as dag:
-    pass
+    task1 = BashOperator(
+        task_id='first_task',
+        bash_command="echo hello world, this is the first task!"
+    )
+    
+    task1
