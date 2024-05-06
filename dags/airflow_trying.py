@@ -3,7 +3,7 @@ from airflow.operators.bash import BashOperator
 from datetime import datetime,timedelta
 
 default_args = {
-    'owner': 'coder2j',
+    'owner': 'abdelrahman',
     'retries': 5,
     'retry_delay': timedelta(minutes=2)
 }
@@ -19,6 +19,11 @@ with DAG(
     task1 = BashOperator(
         task_id='first_task',
         bash_command="echo hello world, this is the first task!"
+    )
+    
+    task2 = BashOperator(
+        task_id='second_task',
+        bash_command="echo hey, I am task2 and will be running after task1"
     )
     
     task1
