@@ -18,7 +18,7 @@ with DAG(
     description='This is our first dag',
     start_date=datetime(2024, 5, 6, 2),
     schedule_interval='@daily'
-    
+        
 ) as dag:
     task1 = BashOperator(
         task_id='first_task',
